@@ -14,7 +14,7 @@ git clone https://github.com/Shweta2024/User-Management-Dashboard.git
 - Go to ```server``` directory:
 
 ```
-cd server
+cd .\server
 ```
 
 - now install all the required packages, by executing the below command:
@@ -35,7 +35,7 @@ npm run start
 - Go to ```server``` directory:
 
 ```
-cd client
+cd .\client
 ```
 
 - now install all the required packages, by executing the below command:
