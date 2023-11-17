@@ -14,29 +14,30 @@ function App() {
     password: ''
   })
 
-  // set the values of username/password
+  // set the values of username & password
   function changeFormData(event) {
     const { name, value } = event.target
     setFormData({ ...formData, [name]: value })
     console.log(formData)
   }
 
-  //add the new user in user list
+  // add a new user in user list
   async function addUser(event) {
     event.preventDefault()
     const newUser = {
       username: formData.username,
       password: formData.password
     }
+
+    // add the new user to the list and set the username & password back to empty
     setUsers([...users, newUser])
     setFormData({ username: '', password: '' })
     const response = await axios.post('/adduser', { username: newUser.username, password: newUser.password })
   }
 
-
+  // get the user list from the backend
   async function getUsers() {
     const response = await axios.get('/showusers')
-    console.log(response.data)
     const newUser = response.data.users
     setUsers(newUser)
   }
@@ -45,9 +46,10 @@ function App() {
     getUsers()
   }, [])
 
+  // filter out the users based on the query string
   const filteredArray = users.filter((val) => { return val.username.toLowerCase().includes(query.toLowerCase()) })
 
-
+  // update the search query
   function changeSearchQuery(event) {
     const searchQuery = event.target.value
     setQuery(searchQuery)
